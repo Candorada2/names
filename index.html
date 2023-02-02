@@ -1,0 +1,115 @@
+    <html>
+        <head>
+            <title id = title>Random By Gustav-</title>
+            <link rel="icon" href="https://icon-library.com/images/random-icon-generator/random-icon-generator-7.jpg">
+        </head>
+        <style>
+            h1{
+                text-shadow: -1px 0 gray, 0 1px gray, 1px 0 gray, 0 -1px gray;
+            }
+            body > *{
+                user-select: none;
+                font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+        </style>
+        <body style="margin:0px;overflow: hidden;">
+            <div id = menu style="position: absolute; width: 100%; height: 100%; background-color: rgba(100,100,100,0.4); z-index: 999; backdrop-filter:blur(4px);">
+                <button id = start style="position: absolute; left:50%; top: 50%; transform: translate(-50%,-50%); background-color: rgba(255,255,255,0); border-radius: 5px; width: 200px; height: 50px; font-size:40px;">Start</button>
+            </div>
+            <h1 style="position: absolute;z-index:2">SAFE</h1>
+            <h1 style="z-index:2; position:absolute;left:50%;">NOT SAFE</h1>
+            <div id = "holder"style="position:absolute;width: 50%; height: 100%; background-color: gray; transform: translate(100%);">
+            </div>
+        </body>
+        <script>
+    function create(name){
+    var newelm = document.createElement("div")
+    newelm.id = name
+    newelm.class = "name"
+    newelm.innerText = name
+    newelm.style.width = "50%"
+    newelm.style.height = "20px"
+    newelm.style.textAlign = "center"
+    newelm.style.backgroundColor = "rgb(200,200,200)"
+    newelm.style.marginLeft = "10px"
+    newelm.style.marginBottom = "10px"
+    newelm.style.position = "absolute"
+    newelm.style.top = i*30 + "px"
+    newelm.style.left = "0px"
+    newelm.style.transition = "left 2s"
+    holder.appendChild(newelm)
+    }
+    var names = new Array("Gustav","Julian V","Mr Gashut","Matthieu","Philip", "Julian R", "Christophe","Ruhaan","Kefei","Max","Dylan","Nathan","Jonah","Umut","Aaditya")
+    var names = names.sort((a, b) => 0.5 - Math.random());
+    for(i=0;i<names.length;i++){
+    create(names[i])
+    }
+    function random1(){
+        var c = holder.children
+    var choice = Math.floor(Math.random()*c.length)
+    function set(i){
+            setTimeout(function(){ 
+                c[i].style.backgroundColor = "red"
+                setTimeout(function(){c[i].style.backgroundColor = "rgb(0,255,0)"},1000)
+                if(i== choice){
+    document.body.appendChild(c[i])
+    }
+        },i*1000)
+    }
+    for(i=0;i<c.length;i++){
+    set(i)
+    }
+    }
+    function random2(){
+        var names = holder.children
+    var chosen = new Array()
+
+    var random
+    random = function(){
+        var safe = true
+    var temp = names[Math.floor(Math.random()*names.length)]
+        for(i=0;i<chosen.length;i++){
+            if(temp == chosen[i])
+                safe = false
+        }
+        if(safe){
+            temp.style.backgroundColor = "rgb(0,255,0)"
+            temp.style.left = -temp.getBoundingClientRect().left
+            chosen[chosen.length] = temp
+        } else{
+            random()
+        }
+    }
+    for(i=0;i<names.length - 1;i++){
+        setTimeout(function(){
+            random()
+        },i*200*(i/5) + i*1000)
+    }
+    }
+    start.onclick = function(){
+        menu.style.display = "none"
+        start.style.display = "none"
+        random2()
+    }
+
+
+
+    //Title Generator
+    var str = "Random By Gustav-"
+
+    function rotate(){
+        var split = str.split("")
+    var first = split[0]
+    split[0] = ""
+    split[split.length] = first
+    str = split.join("")
+        return str
+    }
+    setInterval(function(){
+        title.innerText = rotate()
+    },500)
+
+
+
+        </script><!--html by Gustav Conrad-->
+    </html>
